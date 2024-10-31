@@ -88,9 +88,10 @@ function editProduct(button) {
         const iva = totalCost * 0.16; // 16% IVA
         const totalFinal = totalCost + iva;
 
-        document.getElementById('totalCost').textContent = `Subtotal: $${totalCost.toFixed(2)}`;
-        document.getElementById('ivaCost').textContent = `IVA: $${iva.toFixed(2)}`;
-        document.getElementById('totalFinalCost').textContent = `Total: $${totalFinal.toFixed(2)}`;
+        document.getElementById('totalCost').textContent = `Subtotal: $${totalCost.toLocaleString('es-MX', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+        document.getElementById('ivaCost').textContent = `IVA: $${iva.toLocaleString('es-MX', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+        document.getElementById('totalFinalCost').textContent = `Total: $${totalFinal.toLocaleString('es-MX', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+
         document.getElementById('totalCostWords').textContent = ` ${numberToWords(totalFinal)}`;
     }
     window.onload = function() {
