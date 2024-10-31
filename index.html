@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cotización</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 30px;
+        }
+
+        .title {
+            font-size: 24px;
+            color: #ADD8E6; /* Бледно-голубой цвет */
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 80%;
+        }
+
+        .company {
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+        }
+
+        .company label {
+            margin-right: -2px;
+
+        }
+
+        .date {
+            font-size: 18px;
+        }
+
+        .image-preview {
+            display: flex;
+            justify-content: space-between;
+            align-items: center; /* Центрирование по вертикали */
+            width: 80%;
+            margin-bottom: 20px;
+        }
+
+        .image-preview img {
+            width: 400px;
+            height: 200px;
+            margin-right: 0px;
+        }
+
+        .slogan {
+            color: rgb(0, 119, 255); /* Синий цвет */
+            font-size: 9px; /* Размер шрифта */
+            margin-right: 0px; /* Отступ от изображений */
+        }
+
+        .content {
+            width: 80%;
+            margin-top: 20px;
+        }
+
+        .form-group {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        select, input {
+            margin-right: 10px;
+            padding: 5px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            border: 1px solid #ccc;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        .product-column {
+            width: 40%;
+        }
+        .price-column, .quantity-column, .total-column {
+            width: 15%;
+        }
+        .remove-column {
+            width: 10%;
+        }
+
+        .total-cost, .iva-cost, .total-final-cost {
+            text-align: right;
+            font-size: 18px;
+            font-weight: bold;
+            margin-top: 15px;
+        }
+
+        .total-cost-words {
+            text-align: right;
+            font-size: 18px;
+            font-style: italic;
+            margin-top: 5px;
+            color: #555;
+        }
+
+        .conditions {
+            width: 80%;
+            margin-top: 20px;
+            font-size: 7px;
+            line-height: 1.5;
+        }
+        #companyName {
+    border: none;
+    resize: none; /* Запрет изменения размера */
+    outline: none; /* Убирает рамку при фокусе */
+}
+
+        /* Стили для печати */
+        @media print {
+            .form-group, .header {
+                display: companyName, Date; /* Скрываем поля выбора товара и заголовок */
+            }
+            .form-group {
+                display: none; /* Скрываем поля выбора товара и заголовок */
+            }
+            .remove-column {
+                display: none; /* Скрываем колонку "Удалить" */
+            }
+            table {
+                margin-top: 0; /* Убираем отступы для печати */
+            }
+            body {
+                margin: 0; /* Убираем отступы для печати */
+            }
+            .image-preview {
+                display: flex; /* Обеспечиваем отображение изображений и слогана */
+            }
+            .slogan {
+                display: inline; /* Обеспечиваем отображение слогана */
+            }
+            button {
+                display: none; /* Скрываем кнопку печати */
+            }
+            
+        }
+        .footer {
+            color: blue; /* Синий цвет */
+            text-align: center; /* Центрирование текста */
+            margin-top: 20px; /* Отступ сверху */
+            font-size: 7px; /* Размер шрифта */
+        }
+    </style>
+</head>
+<body>
+
+<!-- Добавление изображений и текста в самом верху страницы -->
+<div class="image-preview">
+    <img id="imagePreview1" src=https://raw.githubusercontent.com/itsaAlexander/Cotizacionn/refs/heads/gh-pages/logo.png alt="Изображение 1">
+    <span class="slogan">Generando Clientes para nuestros clientes</span>
+</div>
+
+<div class="title">COTIZACIÓN</div>
+
+<div class="header">
+    <div class="company">
+        <label for="companyName"></label>
+        <textarea id="companyName" placeholder="Escribir un titulo" rows="3" style="width: 500px;"></textarea>
+    </div>
+    <div class="date" id="date"></div>
+    
+</div>
+
+<div class="content">
+    <div class="form-group">
+        <label for="productSelect">Eligir equipo:</label>
+        <select id="productSelect">
+            <option value="1313" data-name="CM32">CM32 - $1,313.00</option>
+            <option value="1313" data-name="CM32+VG54">CM32+VG54 - $1,313.00</option>
+            <option value="1313" data-name="CM32+VG54+BP">CM32+VG54+BP - $1,313.00</option>
+            <option value="1523" data-name="CM32+VG54+EI">CM32+VG54+EI - $1,523.00</option>
+            <option value="1523" data-name="CM32+VG54+BP+EI">CM32+VG54+BP+EI - $1,523.00</option>
+            <option value="1523" data-name="CM32+VG54+CC">CM32+VG54+CC - $1,523.00</option>
+            <option value="2520" data-name="CM32+VG54+BP+EI+CC">CM32+VG54+BP+EI+CC - $2,520.00</option>
+            <option value="1313" data-name="BP">BP - $1,313.00</option>
+            <option value="1313" data-name="EI">EI - $1,313.00</option>
+            <option value="1470" data-name="CC">CC - $1,470.00</option>
+            <option value="1470" data-name="VG54">VG54 - $1,470.00</option>
+            <option value="368" data-name="AG51">AG51 - $368.00</option>
+            <option value="1470" data-name="AG52">AG52 - $1,470.00</option>
+            <option value="210" data-name="SENSOR DE TEMPERATURA">SENSOR DE TEMPERATURA - $210.00</option>
+            <option value="315" data-name="LECTOR DE TARJETA">LECTOR DE TARJETA - $315.00</option>
+            <option value="210" data-name="SENSOR DE APERTURA">SENSOR DE APERTURA - $210.00</option>
+            <option value="1785" data-name="AG52+SENSOR TEMPERATURA + SENSOR APERTURA">AG52+SENSOR TEMPERATURA + SENSOR APERTURA - $1,785.00</option>
+            <option value="238" data-name="CABLE MACHO HEMBRA 7 MTS">CABLE MACHO HEMBRA 7 MTS - $238.00</option>
+            <option value="263" data-name="CABLE MACHO HEMBRA 11 MTS">CABLE MACHO HEMBRA 11 MTS - $263.00</option>
+            <option value="358" data-name="CABLE MACHO HEMBRA 15 MTS">CABLE MACHO HEMBRA 15 MTS - $358.00</option>
+            <option value="465" data-name="CABLE HEMBRA HEMBRA 1 MT">CABLE HEMBRA HEMBRA 1 MT - $465.00</option>
+            <option value="2346" data-name="2 C A M A R A S T U R R E N T">2 C A M A R A S T U R R E N T - $2,346.00</option>
+            <option value="476" data-name="2 CABLES MACHO HEMBRA 7 MTS">2 CABLES MACHO HEMBRA 7 MTS - $476.00</option>
+            <option value="465" data-name="1 CABLE HEMBRA HEMBRA">1 CABLE HEMBRA HEMBRA - $465.00</option>
+            <option value="4995" data-name="1 MULTIPLEXOR">1 MULTIPLEXOR - $4,995.00</option>
+            <option value="2126" data-name="2 CAMARAS MINI DOMO">2 CAMARAS MINI DOMO - $2,126.00</option>
+            <option value="2428" data-name="2 CAMARAS DAHUA">2 CAMARAS DAHUA - $2,428.00</option>
+            <option value="2426" data-name="2 CAMARAS FISHEYE">2 CAMARAS FISHEYE - $2,426.00</option>
+            <option value="1523" data-name="DESINSTALACION">DESINSTALACION - $1,523.00</option>
+            <option value="1523" data-name="REINSTALACION">REINSTALACION - $1,523.00</option>
+            <option value="3045" data-name="REUBICACION (EN LA MISMA LOCALIDAD)">REUBICACION (EN LA MISMA LOCALIDAD) - $3,045.00</option>
+            <option value="6195" data-name="REUBICACION (EN LOCALIDADES DIFERENTES)">REUBICACION (EN LOCALIDADES DIFERENTES) - $6,195.00</option>
+            <option value="1313" data-name="REVISION">REVISION - $1,313.00</option>
+        </select>
+
+        <label for="quantity">cantidad:</label>
+        <input type="number" id="quantity" min="1" value="1">
+
+        <button onclick="addProduct()">Agregar</button>
+    </div>
+
+    <table id="invoiceTable">
+        <thead>
+        <tr>
+            <th class="product-column">Descripción</th>
+            <th class="price-column">Precio Unitario</th>
+            <th class="quantity-column">Cantidad</th>
+            <th class="total-column">Subtotal</th>
+            <th class="remove-column">Editar</th>
+        </tr>
+        </thead>
+        <tbody id="invoiceBody"></tbody>
+    </table>
+
+    <div class="total-cost" id="totalCost">Subtotal: $0.00</div>
+    <div class="iva-cost" id="ivaCost">IVA: $0.00</div>
+    <div class="total-final-cost" id="totalFinalCost">Total: $0.00</div>
+    <div class="total-cost-words" id="totalCostWords"> </div>
+</div>
+
+<div class="conditions">
+    <h3>Condiciones Comerciales</h3>
+    <ol>
+        <li>Los precios de la presente propuesta SÍ INCLUYEN el 16% del IVA (VAT)</li>
+        <li>El costo sí incluye viáticos.</li>
+        <li>Los precios están expresados en: Pesos (M.N.)</li>
+        <li>Forma de pago: 100% ANTES DE LA ENTREGA DE PRODUCTOS</li>
+        <li>Vigencia de la cotización: 15 días naturales a partir de </br>
+            la fecha de cotización.</li>
+        <li>La entrega de mercancía en la Cd. de México y Área Metropolitana</br>
+             no tiene cargos, para localidades foráneas se hará la cotización</br>
+              correspondiente del envío o entrega.</li>
+        <li>El costo final de esta cotización puede variar en caso de existir</br>
+             algún ajuste adicional en la instalación y/o configuración que </br>
+             el cliente requiera fuera de lo establecido en esta propuesta, así como </br>
+             paquetería especial para la entrega o configuración personalizada.</li>
+        <li>Una vez confirmado el servicio/producto NO se aceptan cancelaciones/devoluciones.</li>
+        <li>Esta cotización puede ser tomada como contrato para el inicio de proyecto siempre</br>
+             y cuando este firmado por ambas partes, Cliente y SERVICIOS SOLERTIA INGENIERÍA,</br>
+              SA DE CV. Así mismo podemos proporcionar un contrato marco de prestación de </br>
+              servicios si así se requiere.</li>
+        <li>La cotización es válida en un horario de instalación de 9 - 19 hrs.</li>
+        <li>Cotización válida para 2 ingenieros.</li>
+        <li>Garantía de 30 días naturales a partir de la fecha de instalación.</li>
+    </ol>
+</div>
+<div id="currentDateTime"></div>
+<div class="footer">
+    Servicios Solertia Ingeniería, SA de CV. | www.solertia.com.mx <br>
+    Aragon 198 int 8 Alamos, Benito Juarez CDMX 03400
+</div>
+
+<!-- Кнопка для печати -->
+<button onclick="printPage()">Imprimir</button>
+
+
+<script src="script.js"></script>
+
+
+</body>
+</html>
