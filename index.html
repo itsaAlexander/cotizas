@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
@@ -15,7 +16,7 @@
 
         .title {
             font-size: 24px;
-            color: #ADD8E6; /* Бледно-голубой цвет */
+            color: #ADD8E6;
             text-align: center;
             margin-bottom: 30px;
             margin-top: -100px;
@@ -36,7 +37,6 @@
 
         .company label {
             margin-right: -2px;
-
         }
 
         .date {
@@ -47,7 +47,7 @@
         .image-preview {
             display: flex;
             justify-content: space-between;
-            align-items: center; /* Центрирование по вертикали */
+            align-items: center;
             width: 80%;
             margin-bottom: 20px;
         }
@@ -60,9 +60,9 @@
         }
 
         .slogan {
-            color: rgb(0, 119, 255); /* Синий цвет */
-            font-size: 8px; /* Размер шрифта */
-            margin-left: -10px; /* Отступ от изображений */
+            color: rgb(0, 119, 255);
+            font-size: 8px;
+            margin-left: -10px;
             white-space: nowrap;
             margin-bottom: -8px;
         }
@@ -100,23 +100,6 @@
             background-color: #f2f2f2;
         }
 
-        .product-column {
-            width: 74%;
-        }
-        .price-column {
-            width: 5%;
-        }
-        .total-column {
-            width: 15%;
-        }
-         
-        .quantity-column {
-            width: 1%;
-        }
-        .remove-column {
-            width: 5%;
-        }
-
         .total-cost, .iva-cost, .total-final-cost {
             text-align: right;
             font-size: 12px;
@@ -138,13 +121,12 @@
             font-size: 7px;
             line-height: 1.5;
         }
-        #companyName {
-    border: none;
-    resize: none; /* Запрет изменения размера */
-    outline: none; /* Убирает рамку при фокусе */
-}
 
-        /* Стили для печати */
+        #companyName {
+            border: none;
+            resize: none;
+            outline: none;
+        }
         @media print {
             .form-group, .header {
                 display: companyName, Date; /* Скрываем поля выбора товара и заголовок */
@@ -172,14 +154,75 @@
             }
             
         }
+
         .footer {
-            color: blue; /* Синий цвет */
-            text-align: center; /* Центрирование текста */
-            margin-top: 20px; /* Отступ сверху */
-            font-size: 7px; /* Размер шрифта */
+            color: blue;
+            text-align: center;
+            margin-top: 20px;
+            font-size: 7px;
+        }
+
+        /* Responsive styles */
+        @media (max-width: 768px) {
+            .header, .content, .conditions {
+                width: 100%;
+                padding: 0 10px;
+            }
+
+            .image-preview img {
+                width: 100%;
+                height: auto;
+                margin-left: 0;
+            }
+
+            .form-group {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .company textarea {
+                width: 100%;
+            }
+
+            table, .total-cost, .iva-cost, .total-final-cost, .total-cost-words, .footer {
+                font-size: 10px;
+            }
+
+            .title {
+                font-size: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .title {
+                font-size: 18px;
+            }
+
+            .slogan {
+                font-size: 6px;
+                margin-left: 0;
+            }
+
+            table th, table td {
+                font-size: 9px;
+                padding: 2px;
+            }
+
+            .total-cost, .iva-cost, .total-final-cost {
+                font-size: 9px;
+            }
+
+            .total-cost-words {
+                font-size: 12px;
+            }
+
+            .footer {
+                font-size: 6px;
+            }
         }
     </style>
 </head>
+
 <body>
 
 <!-- Добавление изображений и текста в самом верху страницы -->
@@ -204,65 +247,65 @@
         <label for="productSelect">Eligir equipo:</label>
         <select id="productSelect">
             <option value="1313" data-name="Servicio de instalación de equipos telematicos marca SAMSARA, CM32 en las
-instalaciones del cliente">CM32 - $1,313.00</option>
-            <option value="1313" data-name="Servicio de instalación de equipos telematicos marca SAMSARA, CM32, VG54 en las
-instalaciones del cliente">CM32+VG54 - $1,313.00</option>
-            <option value="1313" data-name="Servicio de instalación de equipos telematicos marca SAMSARA, CM32, VG54, PB en las
-instalaciones del cliente">CM32+VG54+PB - $1,313.00</option>
-            <option value="1523" data-name="Servicio de instalación de equipos telematicos marca SAMSARA, CM32, VG54, EI en las
-instalaciones del cliente">CM32+VG54+EI - $1,523.00</option>
-            <option value="1523" data-name="Servicio de instalación de equipos telematicos marca SAMSARA, CM32, VG54, PB, EI en las
-instalaciones del cliente">CM32+VG54+PB+EI - $1,523.00</option>
-            <option value="1523" data-name="Servicio de instalación de equipos telematicos marca SAMSARA, CM32, VG54, CC en las
-instalaciones del cliente">CM32+VG54+CC - $1,523.00</option>
-            <option value="2520" data-name="Servicio de instalación de equipos telematicos marca SAMSARA, CM32, VG54, PB, EI, CC en las
-instalaciones del cliente">CM32+VG54+BP+EI+CC - $2,520.00</option>
-            <option value="1313" data-name="Servicio de instalación de equipos telematicos marca SAMSARA, PB en las
-instalaciones del cliente">PB - $1,313.00</option>
-            <option value="1313" data-name="Servicio de instalación de equipos telematicos marca SAMSARA, EI en las
-instalaciones del cliente">EI - $1,313.00</option>
-            <option value="1470" data-name="Servicio de instalación de equipos telematicos marca SAMSARA, CC en las
-instalaciones del cliente">CC - $1,470.00</option>
-            <option value="1470" data-name="Servicio de instalación de equipos telematicos marca SAMSARA, VG54 en las
-instalaciones del cliente">VG54 - $1,470.00</option>
-            <option value="368" data-name="Servicio de instalación de equipos telematicos marca SAMSARA, AG51 en las
-instalaciones del cliente">AG51 - $368.00</option>
-            <option value="1470" data-name="Servicio de instalación de equipos telematicos marca SAMSARA, AG52 en las
-instalaciones del cliente">AG52 - $1,470.00</option>
-            <option value="210" data-name="Servicio de instalación de equipos telematicos marca SAMSARA, sensor de temperatura en las
-instalaciones del cliente">SENSOR DE TEMPERATURA - $210.00</option>
-            <option value="315" data-name="Servicio de instalación de equipos telematicos marca SAMSARA, lector de tarjeta en las
-instalaciones del cliente">LECTOR DE TARJETA - $315.00</option>
-            <option value="210" data-name="Servicio de instalación de equipos telematicos marca SAMSARA, sensor de apertura en las
-instalaciones del cliente">SENSOR DE APERTURA - $210.00</option>
-            <option value="1785" data-name="Servicio de instalación de equipos telematicos marca SAMSARA, AG52, sensor de temperatura, sensor de apertura en las
-instalaciones del cliente">AG52+SENSOR TEMPERATURA + SENSOR APERTURA - $1,785.00</option>
-            <option value="238" data-name="suministro de cable macho hembra 7 mts">CABLE MACHO HEMBRA 7 MTS - $238.00</option>
-            <option value="263" data-name="suministro de cable macho hembra 11 mts">CABLE MACHO HEMBRA 11 MTS - $263.00</option>
-            <option value="358" data-name="suministro de cable macho hembra 15 mts">CABLE MACHO HEMBRA 15 MTS - $358.00</option>
-            <option value="465" data-name="suministro de cable hembra hembra 1 mts">CABLE HEMBRA HEMBRA 1 MT - $465.00</option>
-            <option value="1173" data-name="suministro de camara turrent">CAMARA TURRENT - $1,173.00</option>
-            <option value="4995" data-name="suministro de multiplexor">MULTIPLEXOR - $4,995.00</option>
-            <option value="1063" data-name="suministro de camara mini domo">CAMARA MINI DOMO - $1,063.00</option>
-            <option value="1214" data-name="suministro de camara Dahua">CAMARA DAHUA - $1,214.00</option>
-            <option value="1213" data-name="suministro de camara camara fisheye">CAMARA FISHEYE - $1,213.00</option>
-            <option value="1523" data-name="desinstalación de equipo Samsara en instalaciones del cliente">DESINSTALACION - $1,523.00</option>
-            <option value="1523" data-name="resinstalación de equipo Samsara en instalaciones del cliente, no incluye desmontaje/desinstalación">REINSTALACION - $1,523.00</option>
-            <option value="3045" data-name="reubicación de equipo Samsara (EN LA MISMA LOCALIDAD)">REUBICACION (EN LA MISMA LOCALIDAD) - $3,045.00</option>
-            <option value="6195" data-name="reubicación de equipo Samsara (EN LOCALIDADES DIFERENTES)">REUBICACION (EN LOCALIDADES DIFERENTES) - $6,195.00</option>
-            <option value="1313" data-name="revisión de equipo Samsara en instalaciones del cliente">REVISION - $1,313.00</option>
-            <option value="0" data-name="GASTOS OPERATIVOS">GASTOS OPERATIVOS - $0.00</option>
-            <option value="0" data-name="MISCELANEOS DE INSTALACIÓN">MISCELANEOS DE INSTALACIÓN - $0.00</option>
-            <option value="750" data-name="Servicio de instalación de equipos telematicos marca SAMSARA, VG54, CM32, PB en las
-instalaciones del cliente">VG+CM+PB(PAQUETE EXPRESS) - $750.00</option>
-            <option value="756" data-name="Servicio de instalación de equipos telematicos marca SAMSARA, VG54, CM32, PB, EI en las
-instalaciones del cliente">VG+CM+PB+EI(TRANSPORTES EXPRESS DEL NORTE) - $756.00</option>
-            <option value="756" data-name="Servicio de instalación de equipos telematicos marca SAMSARA, AG52 en las
-instalaciones del cliente">AG(TRANSPORTES EXPRESS DEL NORTE) - $756.00</option>
-            <option value="756" data-name="Servicio de instalación de equipos telematicos marca SAMSARA, VG54, CM32, PB, EI en las
-instalaciones del cliente">VG+CM+PB+EI(TRAYECTO ALA/LARMEX/TM) - $756.00</option>
-            <option value="756" data-name="Servicio de instalación de equipos telematicos marca SAMSARA, AG52, DM11, CARGO en las
-instalaciones del cliente">AG+DM11+CRGO(TRAYECTO ALA/LARMEX/TM) - $756.00</option>
+            instalaciones del cliente">CM32 - $1,313.00</option>
+                        <option value="1313" data-name="Servicio de instalación de equipos telematicos marca SAMSARA, CM32, VG54 en las
+            instalaciones del cliente">CM32+VG54 - $1,313.00</option>
+                        <option value="1313" data-name="Servicio de instalación de equipos telematicos marca SAMSARA, CM32, VG54, PB en las
+            instalaciones del cliente">CM32+VG54+PB - $1,313.00</option>
+                        <option value="1523" data-name="Servicio de instalación de equipos telematicos marca SAMSARA, CM32, VG54, EI en las
+            instalaciones del cliente">CM32+VG54+EI - $1,523.00</option>
+                        <option value="1523" data-name="Servicio de instalación de equipos telematicos marca SAMSARA, CM32, VG54, PB, EI en las
+            instalaciones del cliente">CM32+VG54+PB+EI - $1,523.00</option>
+                        <option value="1523" data-name="Servicio de instalación de equipos telematicos marca SAMSARA, CM32, VG54, CC en las
+            instalaciones del cliente">CM32+VG54+CC - $1,523.00</option>
+                        <option value="2520" data-name="Servicio de instalación de equipos telematicos marca SAMSARA, CM32, VG54, PB, EI, CC en las
+            instalaciones del cliente">CM32+VG54+BP+EI+CC - $2,520.00</option>
+                        <option value="1313" data-name="Servicio de instalación de equipos telematicos marca SAMSARA, PB en las
+            instalaciones del cliente">PB - $1,313.00</option>
+                        <option value="1313" data-name="Servicio de instalación de equipos telematicos marca SAMSARA, EI en las
+            instalaciones del cliente">EI - $1,313.00</option>
+                        <option value="1470" data-name="Servicio de instalación de equipos telematicos marca SAMSARA, CC en las
+            instalaciones del cliente">CC - $1,470.00</option>
+                        <option value="1470" data-name="Servicio de instalación de equipos telematicos marca SAMSARA, VG54 en las
+            instalaciones del cliente">VG54 - $1,470.00</option>
+                        <option value="368" data-name="Servicio de instalación de equipos telematicos marca SAMSARA, AG51 en las
+            instalaciones del cliente">AG51 - $368.00</option>
+                        <option value="1470" data-name="Servicio de instalación de equipos telematicos marca SAMSARA, AG52 en las
+            instalaciones del cliente">AG52 - $1,470.00</option>
+                        <option value="210" data-name="Servicio de instalación de equipos telematicos marca SAMSARA, sensor de temperatura en las
+            instalaciones del cliente">SENSOR DE TEMPERATURA - $210.00</option>
+                        <option value="315" data-name="Servicio de instalación de equipos telematicos marca SAMSARA, lector de tarjeta en las
+            instalaciones del cliente">LECTOR DE TARJETA - $315.00</option>
+                        <option value="210" data-name="Servicio de instalación de equipos telematicos marca SAMSARA, sensor de apertura en las
+            instalaciones del cliente">SENSOR DE APERTURA - $210.00</option>
+                        <option value="1785" data-name="Servicio de instalación de equipos telematicos marca SAMSARA, AG52, sensor de temperatura, sensor de apertura en las
+            instalaciones del cliente">AG52+SENSOR TEMPERATURA + SENSOR APERTURA - $1,785.00</option>
+                        <option value="238" data-name="suministro de cable macho hembra 7 mts">CABLE MACHO HEMBRA 7 MTS - $238.00</option>
+                        <option value="263" data-name="suministro de cable macho hembra 11 mts">CABLE MACHO HEMBRA 11 MTS - $263.00</option>
+                        <option value="358" data-name="suministro de cable macho hembra 15 mts">CABLE MACHO HEMBRA 15 MTS - $358.00</option>
+                        <option value="465" data-name="suministro de cable hembra hembra 1 mts">CABLE HEMBRA HEMBRA 1 MT - $465.00</option>
+                        <option value="1173" data-name="suministro de camara turrent">CAMARA TURRENT - $1,173.00</option>
+                        <option value="4995" data-name="suministro de multiplexor">MULTIPLEXOR - $4,995.00</option>
+                        <option value="1063" data-name="suministro de camara mini domo">CAMARA MINI DOMO - $1,063.00</option>
+                        <option value="1214" data-name="suministro de camara Dahua">CAMARA DAHUA - $1,214.00</option>
+                        <option value="1213" data-name="suministro de camara camara fisheye">CAMARA FISHEYE - $1,213.00</option>
+                        <option value="1523" data-name="desinstalación de equipo Samsara en instalaciones del cliente">DESINSTALACION - $1,523.00</option>
+                        <option value="1523" data-name="resinstalación de equipo Samsara en instalaciones del cliente, no incluye desmontaje/desinstalación">REINSTALACION - $1,523.00</option>
+                        <option value="3045" data-name="reubicación de equipo Samsara (EN LA MISMA LOCALIDAD)">REUBICACION (EN LA MISMA LOCALIDAD) - $3,045.00</option>
+                        <option value="6195" data-name="reubicación de equipo Samsara (EN LOCALIDADES DIFERENTES)">REUBICACION (EN LOCALIDADES DIFERENTES) - $6,195.00</option>
+                        <option value="1313" data-name="revisión de equipo Samsara en instalaciones del cliente">REVISION - $1,313.00</option>
+                        <option value="0" data-name="GASTOS OPERATIVOS">GASTOS OPERATIVOS - $0.00</option>
+                        <option value="0" data-name="MISCELANEOS DE INSTALACIÓN">MISCELANEOS DE INSTALACIÓN - $0.00</option>
+                        <option value="750" data-name="Servicio de instalación de equipos telematicos marca SAMSARA, VG54, CM32, PB en las
+            instalaciones del cliente">VG+CM+PB(PAQUETE EXPRESS) - $750.00</option>
+                        <option value="756" data-name="Servicio de instalación de equipos telematicos marca SAMSARA, VG54, CM32, PB, EI en las
+            instalaciones del cliente">VG+CM+PB+EI(TRANSPORTES EXPRESS DEL NORTE) - $756.00</option>
+                        <option value="756" data-name="Servicio de instalación de equipos telematicos marca SAMSARA, AG52 en las
+            instalaciones del cliente">AG(TRANSPORTES EXPRESS DEL NORTE) - $756.00</option>
+                        <option value="756" data-name="Servicio de instalación de equipos telematicos marca SAMSARA, VG54, CM32, PB, EI en las
+            instalaciones del cliente">VG+CM+PB+EI(TRAYECTO ALA/LARMEX/TM) - $756.00</option>
+                        <option value="756" data-name="Servicio de instalación de equipos telematicos marca SAMSARA, AG52, DM11, CARGO en las
+            instalaciones del cliente">AG+DM11+CRGO(TRAYECTO ALA/LARMEX/TM) - $756.00</option> $756.00</option>
         </select>
 
         <label for="quantity">cantidad:</label>
