@@ -1,5 +1,6 @@
 
-    let totalCost = 0;
+let totalCost = 0;
+let unsavedChanges = false; // флаг несохраненных изменений
 
     function updateDate() {
         const dateElement = document.getElementById('date');
@@ -49,6 +50,7 @@ function editProduct(button) {
         quantityCell.contentEditable = 'true';
 
         button.textContent = 'Guardar';
+        unsavedChanges = true;
     } else {
         // Сохраняем изменения
         const newProduct = productCell.textContent;
@@ -68,6 +70,7 @@ function editProduct(button) {
             quantityCell.contentEditable = 'false';
 
             button.textContent = 'Editar';
+            unsavedChanges = false;
 
             updateTotalCost();
         } else {
@@ -142,9 +145,14 @@ function editProduct(button) {
 
         return words.trim();
     }
+    
 
     function printPage() {
-        window.print();
+        if (unsavedChanges) {
+            alert("Los cambios no se han guardado");
+        } else {
+            window.print();
+        }
     }
 
     updateDate();
