@@ -48,9 +48,10 @@ function editProduct(button) {
         productCell.contentEditable = 'true';
         priceCell.contentEditable = 'true';
         quantityCell.contentEditable = 'true';
+        unsavedChanges = true;
 
         button.textContent = 'Guardar';
-        unsavedChanges = true;
+        
     } else {
         // Сохраняем изменения
         const newProduct = productCell.textContent;
@@ -68,9 +69,10 @@ function editProduct(button) {
             productCell.contentEditable = 'false';
             priceCell.contentEditable = 'false';
             quantityCell.contentEditable = 'false';
+            unsavedChanges = false;
 
             button.textContent = 'Editar';
-            unsavedChanges = false;
+            
 
             updateTotalCost();
         } else {
