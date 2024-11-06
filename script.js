@@ -1,6 +1,5 @@
 
 let totalCost = 0;
-let unsavedChanges = false; // флаг несохраненных изменений
 
     function updateDate() {
         const dateElement = document.getElementById('date');
@@ -23,7 +22,8 @@ let unsavedChanges = false; // флаг несохраненных измене�
     totalCost += total;
 
     const row = document.createElement('tr');
-    row.innerHTML = `
+    row.setAttribute('data-unsaved', 'false'); // Новая строка помечается как сохраненная
+    row.innerHTML =  `
         <td class="product-cell">${productName}</td>
         <td class="price-cell">$${price.toFixed(2)}</td>
         <td class="quantity-cell">${quantity}</td>
@@ -48,10 +48,9 @@ function editProduct(button) {
         productCell.contentEditable = 'true';
         priceCell.contentEditable = 'true';
         quantityCell.contentEditable = 'true';
-        unsavedChanges = true;
 
         button.textContent = 'Guardar';
-        
+        row.setAttribute('data-unsaved', 'true');
     } else {
         // Сохраняем изменения
         const newProduct = productCell.textContent;
@@ -70,9 +69,10 @@ function editProduct(button) {
             productCell.contentEditable = 'false';
             priceCell.contentEditable = 'false';
             quantityCell.contentEditable = 'false';
-            unsavedChanges = false;
+           
 
             button.textContent = 'Editar';
+            row.setAttribute('data-unsaved', 'false'); 
             
 
             updateTotalCost();
@@ -151,12 +151,13 @@ function editProduct(button) {
     
 
     function printPage() {
-        if (unsavedChanges) {
-            alert("Los cambios no se han guardado");
+        const unsavedRows = document.querySelectorAll('tr[data-unsaved="true"]');
+        if (unsavedRows.length > 0) {
+            alert("Los cambios no se han guardado.");
         } else {
             window.print();
         }
     }
 
     updateDate();
-
+    
