@@ -57,6 +57,7 @@ function editProduct(button) {
         const newProduct = productCell.textContent;
         const newPrice = parseFloat(priceCell.textContent.replace('$', ''));
         const newQuantity = parseInt(quantityCell.textContent);
+        unsavedChanges = false;
 
         if (!isNaN(newPrice) && !isNaN(newQuantity)) {
             const newTotal = newPrice * newQuantity;
