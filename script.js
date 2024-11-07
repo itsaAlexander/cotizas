@@ -158,16 +158,16 @@ function numberToWords(number) {
 
     return words.trim();
 }
-function printPage() {
-        if (unsavedChanges) {
-            alert("Los cambios no se han guardado");
+   
+
+    function printPage() {
+        const unsavedRows = document.querySelectorAll('tr[data-unsaved="true"]');
+        if (unsavedRows.length > 0) {
+            alert("Los cambios no se han guardado.");
         } else {
             window.print();
         }
     }
-
-    updateDate();
-
 
     updateDate();
     
