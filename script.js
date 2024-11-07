@@ -158,6 +158,15 @@ function numberToWords(number) {
 
     return words.trim();
 }
+function printPage() {
+        if (unsavedChanges) {
+            alert("Los cambios no se han guardado");
+        } else {
+            window.print();
+        }
+    }
+
+    updateDate();
 
 
     updateDate();
