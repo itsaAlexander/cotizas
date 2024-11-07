@@ -122,6 +122,18 @@
             line-height: 1.5;
         }
 
+        .notes {
+            width: 80%;
+            margin-top: 20px;
+            font-size: 7px;
+            line-height: 1.5;
+        }
+        #notas {
+            border: none;
+            resize: none;
+            outline: none;
+        }
+
         #companyName {
             border: none;
             resize: none;
@@ -152,6 +164,7 @@
             button {
                 display: none; /* Скрываем кнопку печати */
             }
+            
             
         }
 
@@ -294,7 +307,7 @@
                         <option value="1214" data-name="suministro de camara Dahua">CAMARA DAHUA - $1,214.00</option>
                         <option value="1213" data-name="suministro de camara camara fisheye">CAMARA FISHEYE - $1,213.00</option>
                         <option value="1523" data-name="desinstalación de equipo Samsara en instalaciones del cliente">DESINSTALACION - $1,523.00</option>
-                        <option value="1523" data-name="resinstalación de equipo Samsara considerando equipo reutilizado en instalaciones del cliente, no incluye desmontaje/desinstalación">REINSTALACION - $1,523.00</option>
+                        <option value="1523" data-name="resinstalación de equipo Samsara en instalaciones del cliente, no incluye desmontaje/desinstalación">REINSTALACION - $1,523.00</option>
                         <option value="3045" data-name="reubicación de equipo Samsara (EN LA MISMA LOCALIDAD)">REUBICACION (EN LA MISMA LOCALIDAD) - $3,045.00</option>
                         <option value="6195" data-name="reubicación de equipo Samsara (EN LOCALIDADES DIFERENTES)">REUBICACION (EN LOCALIDADES DIFERENTES) - $6,195.00</option>
                         <option value="1313" data-name="revisión de equipo Samsara en instalaciones del cliente">REVISION - $1,313.00</option>
@@ -309,8 +322,7 @@
                         <option value="756" data-name="Servicio de instalación de equipos telematicos marca SAMSARA, VG54, CM32, PB, EI en las
             instalaciones del cliente">VG+CM+PB+EI(TRAYECTO ALA/LARMEX/TM) - $756.00</option>
                         <option value="756" data-name="Servicio de instalación de equipos telematicos marca SAMSARA, AG52, DM11, CARGO en las
-            instalaciones del cliente">AG+DM11+CRGO(TRAYECTO ALA/LARMEX/TM) - $756.00</option> 
-            <option value="1313" data-name="Colocación de CM">COLOCACÍON DE CM - $1313.00</option> 
+            instalaciones del cliente">AG+DM11+CRGO(TRAYECTO ALA/LARMEX/TM) - $756.00</option> $756.00</option>
         </select>
 
         <label for="quantity">cantidad:</label>
@@ -337,6 +349,14 @@
     <div class="total-final-cost" id="totalFinalCost">Total: $0.00</div>
     <div class="total-cost-words" id="totalCostWords"> </div>
 </div>
+<div class="notes">
+    <div class="Mnotes">
+        <label for="notas"></label>
+        <textarea id="notas" placeholder="" rows="3" style="width: 400px;"></textarea>
+    </div>
+    <div class="date" id="date"></div>
+    
+</div>
 
 <div class="conditions">
     <h3>Condiciones Comerciales</h3>
@@ -345,27 +365,23 @@
         <li>El costo sí incluye viáticos.</li>
         <li>Los precios están expresados en: Pesos (M.N.)</li>
         <li>Forma de pago: 100% ANTICIPADO, PREVIO A LA PROGRAMACION DE LOS SERVICIOS.</li>
-        <li>Vigencia de la cotización: 15 días naturales a partir de la fecha de cotización.</li>
-        <li>La entrega de mercancía en la Cd. de México y Área Metropolitana no tiene cargos, para localidades foráneas se hará la cotización correspondiente del envío o entrega.</li>
+        <li>Vigencia de la cotización: 15 días naturales a partir de
+            la fecha de cotización.</li>
+        <li>La entrega de mercancía en la Cd. de México y Área Metropolitana
+             no tiene cargos, para localidades foráneas se hará la cotización
+              correspondiente del envío o entrega.</li>
         <li>El costo final de esta cotización puede variar en caso de existir
              algún ajuste adicional en la instalación y/o configuración que 
              el cliente requiera fuera de lo establecido en esta propuesta, así como 
              paquetería especial para la entrega o configuración personalizada.</li>
         <li>Una vez confirmado el servicio/producto NO se aceptan cancelaciones/devoluciones.</li>
         <li>Esta cotización puede ser tomada como contrato para el inicio de proyecto siempre
-        y cuando este firmado por el cliente de manera autógrafa anexando la identificación
-        oficial, y/o acta constitutiva referenciando los poderes del este como representante
-        legal y un comprobante de domicilio no mayor a 3 meses.</li>
+             y cuando este firmado por ambas partes, Cliente y SERVICIOS SOLERTIA INGENIERÍA,
+              SA DE CV. Así mismo podemos proporcionar un contrato marco de prestación de 
+              servicios si así se requiere.</li>
         <li>La cotización es válida en un horario de instalación de 9 - 19 hrs.</li>
+        <li>Cotización válida para 2 ingenieros.</li>
         <li>Garantía de 30 días naturales a partir de la fecha de instalación.</li>
-        <li>Los equipos y/o productos entregados tienen garantia de 1 año apartir
-        de la fecha de entrega.</li>
-        <li>El tiempo de entraga de los equipos y/o productos serán en 15 días naturales.</li>
-        <li>De acuerdo a el Artículo 362. Los deudores que demoren el pago de sus deudas
-        deberán satisfacer, desde el día siguiente al del vencimiento, el interés pactado,
-        quedando prohibido que exceda al interés pactado anual (CAT47%), multiplicando por el
-        factor de 1.25 veces. El cual sera considerado en proporcional en los dias de retraso del
-        pago de las facturas emitidas.</li>
     </ol>
 </div>
 <div id="currentDateTime"></div>
