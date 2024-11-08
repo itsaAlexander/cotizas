@@ -94,10 +94,17 @@
             border: 1px solid #ccc;
             padding: 3px;
             text-align: left;
+            border-color: #ADD8E6;
+            border-right: none;
+            border-left: none;
+            box-shadow:  0px 2px 0px #ADD8E6;
+
         }
 
         th {
             background-color: #f2f2f2;
+            border: none;
+            
         }
 
         .total-cost, .iva-cost, .total-final-cost {
@@ -136,6 +143,12 @@
 
         #companyName {
             border: none;
+            resize: none;
+            outline: none;
+        }
+
+        #invoiceBody {
+            border-color: rgb(0, 119, 255);;
             resize: none;
             outline: none;
         }
@@ -350,6 +363,7 @@
     <div class="total-final-cost" id="totalFinalCost">Total: $0.00</div>
     <div class="total-cost-words" id="totalCostWords"> </div>
 </div>
+
 <div class="notes">
     <div class="Mnotes">
         <label for="notas"></label>
