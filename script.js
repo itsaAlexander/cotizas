@@ -105,80 +105,58 @@ function editProduct(button) {
 };
 
 function numberToWords(number) {
+    number = Math.round(number * 100) / 100; // Округление числа
     if (number === 0) return "cero";
 
     const units = ["", "uno", "dos", "tres", "cuatro", "cinco", "seis", "siete", "ocho", "nueve"];
     const teens = ["diez", "once", "doce", "trece", "catorce", "quince", "dieciséis", "diecisiete", "dieciocho", "diecinueve"];
     const tens = ["", "", "veinte", "treinta", "cuarenta", "cincuenta", "sesenta", "setenta", "ochenta", "noventa"];
     const hundreds = ["", "ciento", "doscientos", "trescientos", "cuatrocientos", "quinientos", "seiscientos", "setecientos", "ochocientos", "novecientos"];
+    const thousands = ["mil"];
     const millions = ["millón", "millones"];
+    const billions = ["mil millones"];
 
-    function convertTriplet(num, isLastTriplet = false) {
+    function convertTriplet(num) {
         const h = Math.floor(num / 100);
         const t = Math.floor((num % 100) / 10);
         const u = num % 10;
 
-        let words = "";
-
-        // Обработка сотен
-        if (h === 1 && t === 0 && u === 0) {
-            words += "cien"; // Ровно 100
-        } else {
-            words += hundreds[h] + " ";
-        }
-
-        // Обработка десятков
-        if (t === 1 && u > 0) {
+        let words = h === 1 && t === 0 && u === 0 ? "cien" : hundreds[h] + " ";
+        if (t === 1) {
             words += teens[u] + " ";
-        } else if (t === 2 && u > 0) {
-            words += "veinti" + units[u] + " "; // Числа от 21 до 29
         } else {
-            words += tens[t] + (t > 2 && u > 0 ? " y " : "") + units[u] + " ";
+            words += tens[t] + (t > 1 && u > 0 ? " y " : " ") + units[u] + " ";
         }
-
-        // Заменяем "uno" на "un", если это не последний триплет
-        if (u === 1 && !isLastTriplet) {
-            words = words.replace("uno", "un");
-        }
-
         return words.trim();
     }
 
     let words = "";
-    const billionsPart = Math.floor(number / 1000000000);
-    const millionsPart = Math.floor((number % 1000000000) / 1000000);
-    const thousandsPart = Math.floor((number % 1000000) / 1000);
-    const unitsPart = Math.floor(number % 1000);
+    const billionsPart = Math.floor(number / 1_000_000_000);
+    const millionsPart = Math.floor((number % 1_000_000_000) / 1_000_000);
+    const thousandsPart = Math.floor((number % 1_000_000) / 1_000);
+    const unitsPart = Math.floor(number % 1_000);
 
-    // Обработка миллиардов
-    if (billionsPart > 0) words += convertTriplet(billionsPart) + " " + (billionsPart > 1 ? "mil millones" : "mil millón") + " ";
-
-    // Обработка миллионов
+    if (billionsPart > 0) words += convertTriplet(billionsPart) + " " + (billionsPart > 1 ? billions[1] : billions[0]) + " ";
     if (millionsPart > 0) words += convertTriplet(millionsPart) + " " + (millionsPart > 1 ? millions[1] : millions[0]) + " ";
-
-    // Обработка тысяч
     if (thousandsPart > 0) {
         if (thousandsPart === 1) {
-            words += "mil "; // Ровно 1000
+            words += "mil ";
         } else {
             words += convertTriplet(thousandsPart) + " mil ";
         }
     }
+    words += convertTriplet(unitsPart);
 
-    // Обработка единиц
-    if (unitsPart > 0 || words === "") {
-        words += convertTriplet(unitsPart, true);
-    }
-
-    // Обработка десятичной части
+    // Разделение целой части и десятичной
     const decimalPart = (number % 1).toFixed(2).split('.')[1];
     if (decimalPart > 0) {
-        words += ` pesos ${decimalPart} / 100`;
+        words += ` pesos ${decimalPart} / 100`; // Указываем десятичные знаки
     }
 
     return words.trim();
 }
-   
+
+
 
     function printPage() {
         const unsavedRows = document.querySelectorAll('tr[data-unsaved="true"]');
