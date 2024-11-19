@@ -105,56 +105,76 @@ function editProduct(button) {
 };
 
 function numberToWords(number) {
-    number = Math.round(number * 100) / 100; // Округление числа
+    number = Math.round(number * 100) / 100; // Округление до двух знаков
+
     if (number === 0) return "cero";
 
     const units = ["", "uno", "dos", "tres", "cuatro", "cinco", "seis", "siete", "ocho", "nueve"];
     const teens = ["diez", "once", "doce", "trece", "catorce", "quince", "dieciséis", "diecisiete", "dieciocho", "diecinueve"];
     const tens = ["", "", "veinte", "treinta", "cuarenta", "cincuenta", "sesenta", "setenta", "ochenta", "noventa"];
-    const hundreds = ["", "ciento", "doscientos", "trescientos", "cuatrocientos", "quinientos", "seiscientos", "setecientos", "ochocientos", "novecientos"];
-    const thousands = ["mil"];
-    const millions = ["millón", "millones"];
-    const billions = ["mil millones"];
+    const hundreds = ["", "cien", "doscientos", "trescientos", "cuatrocientos", "quinientos", "seiscientos", "setecientos", "ochocientos", "novecientos"];
 
-    function convertTriplet(num) {
+    function convertTriplet(num, isThousandOrMore) {
         const h = Math.floor(num / 100);
         const t = Math.floor((num % 100) / 10);
         const u = num % 10;
 
-        let words = h === 1 && t === 0 && u === 0 ? "cien" : hundreds[h] + " ";
-        if (t === 1) {
-            words += teens[u] + " ";
+        let words = h === 1 && t + u > 0 ? "ciento" : hundreds[h];
+
+        if (t === 1 && u > 0) {
+            words += " " + teens[u];
+        } else if (t === 2 && u > 0) {
+            words += " veinti" + units[u];
         } else {
-            words += tens[t] + (t > 1 && u > 0 ? " y " : " ") + units[u] + " ";
+            words += " " + tens[t];
+            if (u > 0) {
+                const unitWord = u === 1 ? (isThousandOrMore ? "un" : "uno") : units[u];
+                words += (t > 2 ? " y " : "") + unitWord;
+            }
         }
         return words.trim();
     }
 
-    let words = "";
-    const billionsPart = Math.floor(number / 1_000_000_000);
-    const millionsPart = Math.floor((number % 1_000_000_000) / 1_000_000);
-    const thousandsPart = Math.floor((number % 1_000_000) / 1_000);
-    const unitsPart = Math.floor(number % 1_000);
+    const integerPart = Math.floor(number);
+    const decimalPart = Math.round((number % 1) * 100);
 
-    if (billionsPart > 0) words += convertTriplet(billionsPart) + " " + (billionsPart > 1 ? billions[1] : billions[0]) + " ";
-    if (millionsPart > 0) words += convertTriplet(millionsPart) + " " + (millionsPart > 1 ? millions[1] : millions[0]) + " ";
-    if (thousandsPart > 0) {
-        if (thousandsPart === 1) {
+    let words = "";
+    const billionsPart = Math.floor(integerPart / 1000000000);
+    const millionsPart = Math.floor((integerPart % 1000000000) / 1000000);
+    const thousandsPart = Math.floor((integerPart % 1000000) / 1000);
+    const rest = integerPart % 1000;
+
+    if (billionsPart > 0) {
+        words += convertTriplet(billionsPart, true) + " " + (billionsPart > 1 ? "millones" : "millón") + " ";
+    }
+
+    if (millionsPart > 0) {
+        words += convertTriplet(millionsPart, true) + " millones ";
+    }
+
+    // Исправление для чисел от 10,000 до 10,999
+    if (thousandsPart === 10 && integerPart < 11000) {
+        words += "diez mil ";
+    } else if (thousandsPart > 0) {
+        if (thousandsPart === 1 && millionsPart === 0) {
             words += "mil ";
         } else {
-            words += convertTriplet(thousandsPart) + " mil ";
+            words += convertTriplet(thousandsPart, true) + " mil ";
         }
     }
-    words += convertTriplet(unitsPart);
 
-    // Разделение целой части и десятичной
-    const decimalPart = (number % 1).toFixed(2).split('.')[1];
+    if (rest > 0) {
+        words += convertTriplet(rest, false);
+    }
+
+    // Добавление дробной части
     if (decimalPart > 0) {
-        words += ` pesos ${decimalPart} / 100`; // Указываем десятичные знаки
+        words += ` pesos ${decimalPart} / 100`;
     }
 
     return words.trim();
 }
+
 
 
 
