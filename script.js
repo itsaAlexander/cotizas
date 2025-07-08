@@ -91,7 +91,6 @@ function editProduct(button) {
     }
 
     function updateTotalCost() {
-        const iva = totalCost * 1; // 16% IVA
         const totalFinal = totalCost;
 
         document.getElementById('totalCost').textContent = `Subtotal: $${totalCost.toLocaleString('es-MX', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
